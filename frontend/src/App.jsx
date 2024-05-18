@@ -36,21 +36,31 @@ function App() {
   };
 
   return (
-    <div className="container">
-      {/* <h1 className="text-3xl font-bold m-2">
+    <div className="container min-h-screen bg-gray-800">
+      <h1 className="text-3xl text-white font-bold m-2">
         Welcome to the cover letter generator
-      </h1> */}
+      </h1>
 
-      {/* <form onSubmit={(e) => submitResume(e)}>
-        <h2>Paste your resume</h2>
-        <textarea rows="6" type="text" name="resume" />
-        <button>Submit</button>
-      </form> */}
+      <form className="flex flex-col " onSubmit={(e) => submitResume(e)}>
+        <h2 className="text-white font-bold m-2">Paste your resume</h2>
+        <textarea
+          className="rounded-lg p-4 w-full bg-gray-500 text-gray-300"
+          rows="6"
+          type="text"
+          name="resume"
+        />
+        <button className="rounded-lg m-2 p-2 bg-orange-500">Submit</button>
+      </form>
 
       <form className="flex flex-col" onSubmit={(e) => submitForm(e)}>
-        <h2 className="text-3xl font-bold m-2">Paste a job description</h2>
-        <textarea className="p-4" rows="6" type="text" name="prompt" />
-        <button className="m-2 p-2 bg-green-100">Submit</button>
+        <h2 className=" text-white font-bold m-2">Paste a job description</h2>
+        <textarea
+          className="rounded-lg p-4 bg-gray-500 text-gray-300 "
+          rows="6"
+          type="text"
+          name="prompt"
+        />
+        <button className="rounded-lg m-2 p-2 bg-green-500">Submit</button>
         <div className="response">{response}</div>
       </form>
     </div>
