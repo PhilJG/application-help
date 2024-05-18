@@ -2,24 +2,23 @@ import { useState } from "react";
 import "./App.css";
 import axios from "axios";
 
-import ResumeForm from "./components/ResumeForm.jsx";
+// import ResumeForm from "./components/ResumeForm.jsx";
 
 function App() {
   const [response, setResponse] = useState("");
   const [resume, setResume] = useState("");
 
-  const submitResume = async (e) => {
+  const submitResume = (e) => {
     e.preventDefault();
-    setResume(e.target.value);
-    console.log(e.target.value);
 
-    console.log(resume);
+    setResume(e.target.resume.value);
   };
 
   const submitForm = async (e) => {
     e.preventDefault();
     let form = new FormData(e.target);
     let formObject = Object.fromEntries(form.entries());
+    formObject.resume = resume;
     console.log(formObject);
 
     const { data } = await axios.post(
@@ -61,7 +60,7 @@ function App() {
           name="prompt"
         />
         <button className="rounded-lg m-2 p-2 bg-green-500">Submit</button>
-        <div className="response">{response}</div>
+        <div className="text-white">{response}</div>
       </form>
     </div>
   );

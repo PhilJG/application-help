@@ -31,14 +31,15 @@ const router = Router()
 // })
 
 router.post('/prompt', async (req, res) => {
-  const { prompt } = req.body
+  const { prompt, resume } = req.body
 
   try {
     const chatCompletion = await openai.chat.completions.create({
       messages: [
         {
           role: 'user',
-          content: `You are an expert resume writer with over 20 years of experience working with job seekers trying to land a role in tech. Highlight the 3 most important responsibilities in this job and respond in json form: ${prompt}`
+          content: `You are an expert resume writer with over 20 years of experience working with job seekers trying to land a role in tech. Highlight the 3 most important responsibilities in this job and respond in json form: "${prompt}" give three ways my pervious work experiance could help me in this role in the s ame json form. Here is my work experiance: ${resume}`
+          // { resume? `You are an expert resume writer with over 20 years of experience working with job seekers trying to land a role in tech. Highlight the 3 most important responsibilities in this job and respond in json form: "${prompt}", give three ways my pervious work experiance could help me in this role in the s ame json form. Here is my work experiance: ${resume}` : `You are an expert resume writer with over 20 years of experience working with job seekers trying to land a role in tech. Highlight the 3 most important responsibilities in this job and respond in json form: "${prompt}"`}
         }
       ],
       model: 'gpt-3.5-turbo'
